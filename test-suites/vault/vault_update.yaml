@@ -1,0 +1,30 @@
+---
+# Validates vault create.
+
+authors:
+  - Intesar Shannan Mohammed
+
+init:
+  - vault_create_init
+
+endpoint: /vault/{{@vault_create_init_Response.data.id}}
+
+method: PUT
+
+testCases:
+  - id: 1
+    body: '{
+      "id": "{{@vault_create_init_Response.data.id}}",
+      "description": "",
+      "val": "value",
+      "visibility": "PRIVATE"
+    }'
+
+assertions:
+  - "@StatusCode == 200"
+  - "@Response.data.description == @Request.description"
+  - "@Response.data.value == @Request.value"
+  - "@Response.data.visibility == @Request.visibility"
+
+tags:
+  - V1
