@@ -6,7 +6,7 @@ type: ABSTRACT
 authors:
   - Intesar Shannan Mohammed
 
-endpoint: /projects/{{@Response.data.id}}/git-account
+endpoint: /projects/{{@Response.data.id}}
 
 method: GET
 
